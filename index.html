@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LifeLine blood donation network — find donors, register to donate, or request blood.">
+  <meta name="theme-color" content="#a91d35">
+  <title>LifeLine — Blood Donation Network</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="emergency">Medical emergency? Call <a href="tel:108">108</a> or <a href="tel:112">112</a>. LifeLine is not an emergency service.</div>
+  <header class="site-header">
+    <a class="brand" href="#home"><span class="brand-mark">♥</span><span><b>LifeLine</b><small>DONOR NETWORK</small></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav id="mainNav">
+      <a href="#donors">Find Donors</a><a href="#register">Become a Donor</a><a href="#safety">Eligibility & Safety</a><a href="#contact">Contact</a>
+      <a class="btn btn-primary nav-cta" href="#request">Request Blood</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> VOLUNTARY DONOR NETWORK · INDIA</span>
+        <h1>Every drop connects a <em>lifeline.</em></h1>
+        <p>Find willing donors by blood group and city, register to donate, or raise a request for a patient — coordinated with care and privacy.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#request">✚ Emergency blood request</a><a class="btn btn-outline" href="#donors">⌕ Find donors</a></div>
+        <p class="micro">For life-threatening emergencies, call <b>108</b> or <b>112</b> and contact the hospital blood bank directly.</p>
+      </div>
+      <div class="hero-art">
+        <div class="blood-drop">♥</div>
+        <div class="art-caption"><span class="pulse">✓</span><div><b>One donation</b><small>can help up to 3 patients</small></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading"><div><span class="kicker">OUR NETWORK</span><h2>Network impact</h2></div><span class="sample-tag">DEMO FIGURES</span></div>
+      <p class="muted">Illustrative numbers for this project demo — they are not live statistics.</p>
+      <div class="stats-grid"><article class="stat"><span>♙</span><strong>1,240</strong><small>Registered donors</small></article><article class="stat"><span>♥</span><strong>386</strong><small>Requests coordinated</small></article><article class="stat"><span>✚</span><strong>42</strong><small>Partner hospitals</small></article><article class="stat"><span>◷</span><strong>3.5 hrs</strong><small>Avg. response time</small></article></div>
+    </section>
+
+    <section class="section how-section">
+      <span class="kicker">HOW IT WORKS</span><h2>Four steps from request to donor</h2>
+      <div class="steps-grid">
+        <article><span class="step-icon">♙</span><b>01 · Register</b><p>Donors sign up with blood group, city and availability. Contact details stay private.</p></article>
+        <article><span class="step-icon">✓</span><b>02 · Verify</b><p>A coordinator reviews each registration before it appears in the public directory.</p></article>
+        <article><span class="step-icon">⌕</span><b>03 · Search</b><p>Search donors by blood group, city and availability or raise a blood request.</p></article>
+        <article><span class="step-icon">♡</span><b>04 · Connect safely</b><p>Coordinators help connect authorised requesters with voluntary donors.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="donors">
+      <div class="section-heading"><div><span class="kicker">DONOR DIRECTORY</span><h2>Find a blood donor</h2></div><span class="sample-tag">FICTIONAL SAMPLE RECORDS</span></div>
+      <p class="muted">Search the demo directory. These entries are fictional and must not be contacted as real donors.</p>
+      <div class="filter-bar">
+        <label>Blood group<select id="bloodFilter"><option value="">All groups</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+        <label>City<input id="cityFilter" placeholder="Enter city"></label>
+        <label>Availability<select id="availabilityFilter"><option value="">Any status</option><option value="yes">Available</option><option value="no">Not available</option></select></label>
+        <button class="btn btn-primary" id="searchDonors">Search donors</button>
+      </div>
+      <div class="donor-grid" id="donorResults" aria-live="polite"></div>
+    </section>
+
+    <section class="section form-section" id="register">
+      <div class="form-intro"><span class="kicker">MAKE A DIFFERENCE</span><h2>Become a blood donor</h2><p>Your registration helps coordinators understand donor availability. Registration does not confirm medical eligibility.</p><div class="privacy-note">🔒 <b>Your privacy matters</b><br>Contact details should only be shared with authorised coordinators and verified requesters.</div></div>
+      <form id="donorForm" class="form-card">
+        <div class="form-grid">
+          <label>Full name *<input name="name" required minlength="2" placeholder="Your name"></label>
+          <label>Age *<input name="age" type="number" min="18" max="65" required placeholder="18–65"></label>
+          <label>Mobile number *<input name="phone" type="tel" pattern="[6-9][0-9]{9}" required placeholder="10-digit Indian mobile"></label>
+          <label>Email (optional)<input name="email" type="email" placeholder="you@example.com"></label>
+          <label>Blood group *<select name="blood" required><option value="">Select group</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+          <label>City *<input name="city" required minlength="2" placeholder="Your city"></label>
+          <label>Last donation date<input name="lastDonation" type="date"></label>
+          <label>Availability *<select name="available" required><option value="yes">Available</option><option value="no">Not available now</option></select></label>
+        </div>
+        <label class="consent"><input type="checkbox" required> I consent to storing these details for this demo and understand contact information must only be shared with authorised coordinators. *</label>
+        <button class="btn btn-primary" type="submit">Register as donor</button><p class="form-message" id="donorMessage" role="status"></p>
+      </form>
+    </section>
+
+    <section class="section request-section" id="request">
+      <div class="section-heading"><div><span class="kicker">NEED BLOOD?</span><h2>Raise a blood request</h2></div></div>
+      <div class="alert">⚠ <span><b>Important:</b> LifeLine does not replace emergency services and does not guarantee blood availability. For emergencies call <a href="tel:108">108</a> / <a href="tel:112">112</a> and contact the hospital blood bank directly.</span></div>
+      <form id="requestForm" class="form-card">
+        <div class="form-grid">
+          <label>Patient name *<input name="patient" required></label><label>Your name (requester) *<input name="requester" required></label>
+          <label>Blood group needed *<select name="blood" required><option value="">Select group</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+          <label>Units required *<input name="units" type="number" min="1" max="20" value="1" required></label>
+          <label>Hospital name *<input name="hospital" required></label><label>Hospital city / location *<input name="location" required></label>
+          <label>Urgency *<select name="urgency" required><option value="">Select urgency</option><option>Critical</option><option>Urgent</option><option>Planned</option></select></label>
+          <label>Contact mobile *<input name="phone" type="tel" pattern="[6-9][0-9]{9}" required placeholder="10-digit Indian mobile"></label>
+          <label>Email (optional)<input name="email" type="email"></label><label>Additional notes<input name="notes" maxlength="300" placeholder="Ward, required date, component…"></label>
+        </div>
+        <label class="consent"><input type="checkbox" required> I confirm the details are accurate and consent to coordinators contacting me. *</label>
+        <button class="btn btn-primary" type="submit">Submit blood request</button><p class="form-message" id="requestMessage" role="status"></p>
+      </form>
+    </section>
+
+    <section class="section safety" id="safety">
+      <div><span class="kicker">DONATE SAFELY</span><h2>Before you donate</h2><ul><li>Generally aged 18–65 years</li><li>Meet the blood bank's weight and haemoglobin requirements</li><li>Feeling well on the day of donation</li><li>Meet the required interval since last donation</li><li>Inform staff about medicines, illness or recent procedures</li></ul></div>
+      <aside><b>Medical disclaimer</b><p>This is general information only. Final eligibility is determined by a qualified blood bank or medical professional after screening. Never rely on blood group alone; hospitals perform cross-matching before transfusion.</p></aside>
+    </section>
+
+    <section class="section contact" id="contact"><span class="kicker">CONTACT</span><h2>Get in touch</h2><p>Questions or feedback about this academic project?</p><a class="btn btn-outline" href="mailto:lifeline.project@example.com">✉ Contact the project team</a><p class="micro muted">Replace this demo email with your project's official contact address before publishing.</p></section>
+  </main>
+  <footer><div class="footer-brand">♥ LifeLine <small>DONOR NETWORK</small></div><p>A final-year academic project connecting voluntary donors, patients and blood-bank coordinators.</p><p class="footer-warning">LifeLine does not replace emergency services or guarantee blood availability.</p><small>© <span id="year"></span> LifeLine · Academic project</small></footer>
+</body>
+</html>
